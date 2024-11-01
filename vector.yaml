@@ -1,0 +1,56 @@
+#                                    __   __  __
+#                                    \ \ / / / /
+#                                     \ V / / /
+#                                      \_/  \/
+#
+#                                    V E C T O R
+#                                   Configuration
+#
+# ------------------------------------------------------------------------------
+# Website: https://vector.dev
+# Docs: https://vector.dev/docs
+# Chat: https://chat.vector.dev
+# ------------------------------------------------------------------------------
+
+# Change this to use a non-default directory for Vector data storage:
+# data_dir: "/var/lib/vector"
+
+# Random Syslog-formatted logs
+sources:
+    syslog_source:
+      type: syslog
+      address: 0.0.0.0:514
+      mode: udp
+
+# Output
+sinks:
+  # File output test
+  #  file_sink:
+  #  type: file
+  #  inputs: ["syslog_source"]
+  #  encoding:
+  #    codec: "text"
+  #  path: /var/log/vectortest.log
+
+  # Grafana Cloud
+  loki_sink:
+    type: "loki"
+    inputs: ["syslog_source"]
+    endpoint: "https://nnnn.grafana.net"
+    path: "/loki/api/v1/push"
+    compression: "snappy"
+    encoding:
+      codec: "json"
+    healthcheck:
+      enabled: true
+    remove_label_fields: true
+    labels:
+      job: "syslog"
+
+
+# Vector's GraphQL API (disabled by default)
+# Uncomment to try it out with the `vector top` command or
+# in your browser at http://localhost:8686
+# api:
+#   enabled: true
+#   address: "127.0.0.1:8686"
