@@ -46,7 +46,10 @@ sinks:
     remove_label_fields: true
     labels:
       job: "syslog"
-
+    auth:
+      strategy: "basic"
+      user: "nnnnnn"
+      password: "nnnnnnnnnnnn="
 
 # Vector's GraphQL API (disabled by default)
 # Uncomment to try it out with the `vector top` command or
