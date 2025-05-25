@@ -12,5 +12,5 @@
 ## Authentication
 * Configured in Grafana Cloud console: https://grafana.com/orgs/nnnn
   * I.e. not congifured in the Grafana instance: https://nnnn.grafana.net 
-* Check Loki/Send Logs to find the URL and username
+* Check Loki/Send Logs to find the URL and the username
 * Set token/password in Access Policies
