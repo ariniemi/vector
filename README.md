@@ -2,6 +2,8 @@
 
 Setup
 * https://vector.dev/docs/setup/installation/package-managers/apt/
+* sudo systemctl enable vector
+* sudo systemctl start vector
 
 Configuration
 * [vector.yaml
